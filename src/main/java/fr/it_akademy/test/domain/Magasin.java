@@ -2,6 +2,7 @@ package fr.it_akademy.test.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +26,8 @@ public class Magasin implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nom")
+    @NotNull
+    @Column(name = "nom", nullable = false)
     private String nom;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "magasin")

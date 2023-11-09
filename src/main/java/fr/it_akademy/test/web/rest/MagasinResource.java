@@ -4,6 +4,8 @@ import fr.it_akademy.test.repository.MagasinRepository;
 import fr.it_akademy.test.service.MagasinService;
 import fr.it_akademy.test.service.dto.MagasinDTO;
 import fr.it_akademy.test.web.rest.errors.BadRequestAlertException;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -48,7 +50,7 @@ public class MagasinResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<MagasinDTO> createMagasin(@RequestBody MagasinDTO magasinDTO) throws URISyntaxException {
+    public ResponseEntity<MagasinDTO> createMagasin(@Valid @RequestBody MagasinDTO magasinDTO) throws URISyntaxException {
         log.debug("REST request to save Magasin : {}", magasinDTO);
         if (magasinDTO.getId() != null) {
             throw new BadRequestAlertException("A new magasin cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +75,7 @@ public class MagasinResource {
     @PutMapping("/{id}")
     public ResponseEntity<MagasinDTO> updateMagasin(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody MagasinDTO magasinDTO
+        @Valid @RequestBody MagasinDTO magasinDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Magasin : {}, {}", id, magasinDTO);
         if (magasinDTO.getId() == null) {
@@ -108,7 +110,7 @@ public class MagasinResource {
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<MagasinDTO> partialUpdateMagasin(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody MagasinDTO magasinDTO
+        @NotNull @RequestBody MagasinDTO magasinDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update Magasin partially : {}, {}", id, magasinDTO);
         if (magasinDTO.getId() == null) {
