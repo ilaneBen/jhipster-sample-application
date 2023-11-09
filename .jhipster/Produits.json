@@ -31,13 +31,6 @@
       "relationshipName": "vendeur",
       "relationshipSide": "left",
       "relationshipType": "one-to-many"
-    },
-    {
-      "otherEntityName": "magasin",
-      "otherEntityRelationshipName": "produits",
-      "relationshipName": "magasin",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",
