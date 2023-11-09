@@ -8,9 +8,9 @@ import { ASC, DESC, SORT } from 'app/shared/util/pagination.constants';
 import { overrideSortStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { getEntities } from './produits.reducer';
+import { getEntities } from './magasin.reducer';
 
-export const Produits = () => {
+export const Magasin = () => {
   const dispatch = useAppDispatch();
 
   const pageLocation = useLocation();
@@ -18,8 +18,8 @@ export const Produits = () => {
 
   const [sortState, setSortState] = useState(overrideSortStateWithQueryParams(getSortState(pageLocation, 'id'), pageLocation.search));
 
-  const produitsList = useAppSelector(state => state.produits.entities);
-  const loading = useAppSelector(state => state.produits.loading);
+  const magasinList = useAppSelector(state => state.magasin.entities);
+  const loading = useAppSelector(state => state.magasin.loading);
 
   const getAllEntities = () => {
     dispatch(
@@ -65,80 +65,61 @@ export const Produits = () => {
 
   return (
     <div>
-      <h2 id="produits-heading" data-cy="ProduitsHeading">
-        <Translate contentKey="jhipsterSampleApplicationApp.produits.home.title">Produits</Translate>
+      <h2 id="magasin-heading" data-cy="MagasinHeading">
+        <Translate contentKey="jhipsterSampleApplicationApp.magasin.home.title">Magasins</Translate>
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="jhipsterSampleApplicationApp.produits.home.refreshListLabel">Refresh List</Translate>
+            <Translate contentKey="jhipsterSampleApplicationApp.magasin.home.refreshListLabel">Refresh List</Translate>
           </Button>
-          <Link to="/produits/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Link to="/magasin/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
             &nbsp;
-            <Translate contentKey="jhipsterSampleApplicationApp.produits.home.createLabel">Create new Produits</Translate>
+            <Translate contentKey="jhipsterSampleApplicationApp.magasin.home.createLabel">Create new Magasin</Translate>
           </Link>
         </div>
       </h2>
       <div className="table-responsive">
-        {produitsList && produitsList.length > 0 ? (
+        {magasinList && magasinList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.id">ID</Translate>{' '}
+                  <Translate contentKey="jhipsterSampleApplicationApp.magasin.id">ID</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
                 </th>
                 <th className="hand" onClick={sort('nom')}>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.nom">Nom</Translate>{' '}
+                  <Translate contentKey="jhipsterSampleApplicationApp.magasin.nom">Nom</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('nom')} />
-                </th>
-                <th className="hand" onClick={sort('prix')}>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.prix">Prix</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('prix')} />
-                </th>
-                <th className="hand" onClick={sort('photo')}>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.photo">Photo</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('photo')} />
-                </th>
-                <th className="hand" onClick={sort('description')}>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.description">Description</Translate>{' '}
-                  <FontAwesomeIcon icon={getSortIconByFieldName('description')} />
-                </th>
-                <th>
-                  <Translate contentKey="jhipsterSampleApplicationApp.produits.magasin">Magasin</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {produitsList.map((produits, i) => (
+              {magasinList.map((magasin, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <Button tag={Link} to={`/produits/${produits.id}`} color="link" size="sm">
-                      {produits.id}
+                    <Button tag={Link} to={`/magasin/${magasin.id}`} color="link" size="sm">
+                      {magasin.id}
                     </Button>
                   </td>
-                  <td>{produits.nom}</td>
-                  <td>{produits.prix}</td>
-                  <td>{produits.photo}</td>
-                  <td>{produits.description}</td>
-                  <td>{produits.magasin ? <Link to={`/magasin/${produits.magasin.id}`}>{produits.magasin.id}</Link> : ''}</td>
+                  <td>{magasin.nom}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/produits/${produits.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                      <Button tag={Link} to={`/magasin/${magasin.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`/produits/${produits.id}/edit`} color="primary" size="sm" data-cy="entityEditButton">
+                      <Button tag={Link} to={`/magasin/${magasin.id}/edit`} color="primary" size="sm" data-cy="entityEditButton">
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
                       </Button>
                       <Button
-                        onClick={() => (location.href = `/produits/${produits.id}/delete`)}
+                        onClick={() => (location.href = `/magasin/${magasin.id}/delete`)}
                         color="danger"
                         size="sm"
                         data-cy="entityDeleteButton"
@@ -157,7 +138,7 @@ export const Produits = () => {
         ) : (
           !loading && (
             <div className="alert alert-warning">
-              <Translate contentKey="jhipsterSampleApplicationApp.produits.home.notFound">No Produits found</Translate>
+              <Translate contentKey="jhipsterSampleApplicationApp.magasin.home.notFound">No Magasins found</Translate>
             </div>
           )
         )}
@@ -166,4 +147,4 @@ export const Produits = () => {
   );
 };
 
-export default Produits;
+export default Magasin;

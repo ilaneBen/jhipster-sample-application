@@ -6,6 +6,7 @@ import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 import Produits from './produits';
 import Vendeur from './vendeur';
 import Prime from './prime';
+import Magasin from './magasin';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -16,6 +17,7 @@ export default () => {
         <Route path="produits/*" element={<Produits />} />
         <Route path="vendeur/*" element={<Vendeur />} />
         <Route path="prime/*" element={<Prime />} />
+        <Route path="magasin/*" element={<Magasin />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>

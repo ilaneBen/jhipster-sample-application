@@ -1,0 +1,24 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109125011",
+  "dto": "mapstruct",
+  "entityTableName": "magasin",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Magasin",
+  "relationships": [
+    {
+      "otherEntityName": "produits",
+      "otherEntityRelationshipName": "magasin",
+      "relationshipName": "produits",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

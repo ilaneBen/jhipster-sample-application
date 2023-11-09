@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IMagasin } from 'app/shared/model/magasin.model';
+import { getEntities as getMagasins } from 'app/entities/magasin/magasin.reducer';
 import { IProduits } from 'app/shared/model/produits.model';
 import { getEntity, updateEntity, createEntity, reset } from './produits.reducer';
 
@@ -19,6 +21,7 @@ export const ProduitsUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
+  const magasins = useAppSelector(state => state.magasin.entities);
   const produitsEntity = useAppSelector(state => state.produits.entity);
   const loading = useAppSelector(state => state.produits.loading);
   const updating = useAppSelector(state => state.produits.updating);
@@ -34,6 +37,8 @@ export const ProduitsUpdate = () => {
     } else {
       dispatch(getEntity(id));
     }
+
+    dispatch(getMagasins({}));
   }, []);
 
   useEffect(() => {
@@ -54,6 +59,7 @@ export const ProduitsUpdate = () => {
     const entity = {
       ...produitsEntity,
       ...values,
+      magasin: magasins.find(it => it.id.toString() === values.magasin.toString()),
     };
 
     if (isNew) {
@@ -68,6 +74,7 @@ export const ProduitsUpdate = () => {
       ? {}
       : {
           ...produitsEntity,
+          magasin: produitsEntity?.magasin?.id,
         };
 
   return (
@@ -130,6 +137,22 @@ export const ProduitsUpdate = () => {
                 data-cy="description"
                 type="text"
               />
+              <ValidatedField
+                id="produits-magasin"
+                name="magasin"
+                data-cy="magasin"
+                label={translate('jhipsterSampleApplicationApp.produits.magasin')}
+                type="select"
+              >
+                <option value="" key="0" />
+                {magasins
+                  ? magasins.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.id}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/produits" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

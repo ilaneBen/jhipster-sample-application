@@ -22,6 +22,8 @@ public class ProduitsDTO implements Serializable {
 
     private String description;
 
+    private MagasinDTO magasin;
+
     public Long getId() {
         return id;
     }
@@ -62,6 +64,14 @@ public class ProduitsDTO implements Serializable {
         this.description = description;
     }
 
+    public MagasinDTO getMagasin() {
+        return magasin;
+    }
+
+    public void setMagasin(MagasinDTO magasin) {
+        this.magasin = magasin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -92,6 +102,7 @@ public class ProduitsDTO implements Serializable {
             ", prix=" + getPrix() +
             ", photo='" + getPhoto() + "'" +
             ", description='" + getDescription() + "'" +
+            ", magasin=" + getMagasin() +
             "}";
     }
 }

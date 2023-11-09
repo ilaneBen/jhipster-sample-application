@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "magasin": {
+      "home": {
+        "title": "Magasins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Magasin",
+        "createOrEditLabel": "Create or edit a Magasin",
+        "notFound": "No Magasins found"
+      },
+      "created": "A new Magasin is created with identifier {{ param }}",
+      "updated": "A Magasin is updated with identifier {{ param }}",
+      "deleted": "A Magasin is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Magasin {{ id }}?"
+      },
+      "detail": {
+        "title": "Magasin"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "produits": "Produits"
+    }
+  }
+}
