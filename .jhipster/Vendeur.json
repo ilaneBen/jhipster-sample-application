@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109125111",
+  "dto": "mapstruct",
+  "entityTableName": "vendeur",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nbrVendu",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "objectifAtteint",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Vendeur",
+  "relationships": [
+    {
+      "otherEntityName": "prime",
+      "otherEntityRelationshipName": "vendeur",
+      "relationshipName": "prime",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "produits",
+      "otherEntityRelationshipName": "vendeur",
+      "relationshipName": "produits",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

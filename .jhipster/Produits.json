@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109125011",
+  "dto": "mapstruct",
+  "entityTableName": "produits",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prix",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Produits",
+  "relationships": [
+    {
+      "otherEntityName": "vendeur",
+      "otherEntityRelationshipName": "produits",
+      "relationshipName": "vendeur",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
