@@ -55,6 +55,10 @@ export const ProduitsDetail = () => {
             </span>
           </dt>
           <dd>{produitsEntity.description}</dd>
+          <dt>
+            <Translate contentKey="jhipsterSampleApplicationApp.produits.magasin">Magasin</Translate>
+          </dt>
+          <dd>{produitsEntity.magasin ? produitsEntity.magasin.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/produits" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

@@ -48,7 +48,7 @@ public class Vendeur implements Serializable {
     private Set<Prime> primes = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "vendeurs" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "vendeurs", "magasin" }, allowSetters = true)
     private Produits produits;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

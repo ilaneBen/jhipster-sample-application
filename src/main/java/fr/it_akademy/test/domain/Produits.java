@@ -45,6 +45,10 @@ public class Produits implements Serializable {
     @JsonIgnoreProperties(value = { "primes", "produits" }, allowSetters = true)
     private Set<Vendeur> vendeurs = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "produits" }, allowSetters = true)
+    private Magasin magasin;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -140,6 +144,19 @@ public class Produits implements Serializable {
     public Produits removeVendeur(Vendeur vendeur) {
         this.vendeurs.remove(vendeur);
         vendeur.setProduits(null);
+        return this;
+    }
+
+    public Magasin getMagasin() {
+        return this.magasin;
+    }
+
+    public void setMagasin(Magasin magasin) {
+        this.magasin = magasin;
+    }
+
+    public Produits magasin(Magasin magasin) {
+        this.setMagasin(magasin);
         return this;
     }
 

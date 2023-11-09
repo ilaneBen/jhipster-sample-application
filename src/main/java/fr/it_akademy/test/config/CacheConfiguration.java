@@ -56,6 +56,8 @@ public class CacheConfiguration {
             createCache(cm, fr.it_akademy.test.domain.Vendeur.class.getName() + ".primes");
             createCache(cm, fr.it_akademy.test.domain.Prime.class.getName());
             createCache(cm, fr.it_akademy.test.domain.Prime.class.getName() + ".vendeurs");
+            createCache(cm, fr.it_akademy.test.domain.Magasin.class.getName());
+            createCache(cm, fr.it_akademy.test.domain.Magasin.class.getName() + ".produits");
             // jhipster-needle-ehcache-add-entry
         };
     }

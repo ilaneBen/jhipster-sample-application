@@ -15,7 +15,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": ["Produits", "Vendeur", "Prime"],
+    "entities": ["Produits", "Magasin", "Vendeur", "Prime"],
     "gitCompany": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "8.0.0",

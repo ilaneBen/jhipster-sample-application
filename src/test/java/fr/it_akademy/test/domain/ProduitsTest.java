@@ -1,5 +1,6 @@
 package fr.it_akademy.test.domain;
 
+import static fr.it_akademy.test.domain.MagasinTestSamples.*;
 import static fr.it_akademy.test.domain.ProduitsTestSamples.*;
 import static fr.it_akademy.test.domain.VendeurTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,5 +46,17 @@ class ProduitsTest {
         produits.setVendeurs(new HashSet<>());
         assertThat(produits.getVendeurs()).doesNotContain(vendeurBack);
         assertThat(vendeurBack.getProduits()).isNull();
+    }
+
+    @Test
+    void magasinTest() throws Exception {
+        Produits produits = getProduitsRandomSampleGenerator();
+        Magasin magasinBack = getMagasinRandomSampleGenerator();
+
+        produits.setMagasin(magasinBack);
+        assertThat(produits.getMagasin()).isEqualTo(magasinBack);
+
+        produits.magasin(null);
+        assertThat(produits.getMagasin()).isNull();
     }
 }

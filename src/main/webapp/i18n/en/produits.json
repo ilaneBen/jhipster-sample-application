@@ -22,7 +22,8 @@
       "prix": "Prix",
       "photo": "Photo",
       "description": "Description",
-      "vendeur": "Vendeur"
+      "vendeur": "Vendeur",
+      "magasin": "Magasin"
     }
   }
 }
