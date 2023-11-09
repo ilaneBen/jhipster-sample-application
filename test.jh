@@ -1,0 +1,25 @@
+entity Produits{
+nom String required
+prix Double required
+photo String 
+description String 
+}
+
+entity Vendeur{
+nom String required
+nbrVendu Double required
+objectifAtteint Boolean
+}
+entity Prime{
+nomVendeur String
+montant Double
+}
+
+relationship ManyToMany{
+Vendeur to Prime
+}
+relationship OneToMany{
+Produits to Vendeur
+}
+dto Produits, Vendeur, Prime with mapstruct
+service Produits, Vendeur, Prime with serviceImpl
