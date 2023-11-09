@@ -14,9 +14,7 @@ entity Prime{
 nomVendeur String
 montant Double
 }
-entity Magasin{
-nom String required
-}
+
 
 relationship ManyToMany{
 Vendeur to Prime
@@ -24,8 +22,6 @@ Vendeur to Prime
 relationship OneToMany{
 Produits to Vendeur
 }
-relationship OneToMany{
-Magasin to Produits
-}
-dto Produits, Vendeur, Prime, Magasin with mapstruct
-service Produits, Vendeur, Prime, Magasin with serviceImpl
+
+dto Produits, Vendeur, Prime with mapstruct
+service Produits, Vendeur, Prime with serviceImpl
