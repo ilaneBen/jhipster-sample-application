@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20231109125211",
+  "dto": "mapstruct",
+  "entityTableName": "prime",
+  "fields": [
+    {
+      "fieldName": "nomVendeur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "Prime",
+  "relationships": [
+    {
+      "otherEntityName": "vendeur",
+      "otherEntityRelationshipName": "prime",
+      "relationshipName": "vendeur",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

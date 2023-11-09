@@ -50,6 +50,12 @@ public class CacheConfiguration {
             createCache(cm, fr.it_akademy.test.domain.User.class.getName() + ".authorities");
             createCache(cm, fr.it_akademy.test.domain.PersistentToken.class.getName());
             createCache(cm, fr.it_akademy.test.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, fr.it_akademy.test.domain.Produits.class.getName());
+            createCache(cm, fr.it_akademy.test.domain.Produits.class.getName() + ".vendeurs");
+            createCache(cm, fr.it_akademy.test.domain.Vendeur.class.getName());
+            createCache(cm, fr.it_akademy.test.domain.Vendeur.class.getName() + ".primes");
+            createCache(cm, fr.it_akademy.test.domain.Prime.class.getName());
+            createCache(cm, fr.it_akademy.test.domain.Prime.class.getName() + ".vendeurs");
             // jhipster-needle-ehcache-add-entry
         };
     }
