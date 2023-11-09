@@ -98,6 +98,9 @@ export const MagasinUpdate = () => {
                 name="nom"
                 data-cy="nom"
                 type="text"
+                validate={{
+                  required: { value: true, message: translate('entity.validation.required') },
+                }}
               />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/magasin" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

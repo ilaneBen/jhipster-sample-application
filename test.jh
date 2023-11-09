@@ -15,7 +15,7 @@ nomVendeur String
 montant Double
 }
 entity Magasin{
-nom String
+nom String required
 }
 
 relationship ManyToMany{

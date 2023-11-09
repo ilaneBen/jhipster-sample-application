@@ -130,6 +130,29 @@ class MagasinResourceIT {
 
     @Test
     @Transactional
+    void checkNomIsRequired() throws Exception {
+        int databaseSizeBeforeTest = magasinRepository.findAll().size();
+        // set the field null
+        magasin.setNom(null);
+
+        // Create the Magasin, which fails.
+        MagasinDTO magasinDTO = magasinMapper.toDto(magasin);
+
+        restMagasinMockMvc
+            .perform(
+                post(ENTITY_API_URL)
+                    .with(csrf())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(magasinDTO))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<Magasin> magasinList = magasinRepository.findAll();
+        assertThat(magasinList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllMagasins() throws Exception {
         // Initialize the database
         magasinRepository.saveAndFlush(magasin);

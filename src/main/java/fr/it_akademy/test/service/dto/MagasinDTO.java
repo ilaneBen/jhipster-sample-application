@@ -1,5 +1,6 @@
 package fr.it_akademy.test.service.dto;
 
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class MagasinDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private String nom;
 
     public Long getId() {
